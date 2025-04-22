@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", async function () {
-  document.querySelector("#app").innerText = JSON.stringify(window.Telegram.WebApp.initData)
+  document.querySelector("#app").innerText = "initData : " + JSON.stringify(window.Telegram.WebApp.initData)
   console.log('hello2', JSON.stringify({ initDataUnsafe: Telegram.WebApp.initDataUnsafe }));
   await fetch('http://localhost:4000/api/v1/auth/auth-user', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ initDataUnsafe: Telegram.WebApp.initDataUnsafe })
+    body: JSON.stringify({ initData: Telegram.WebApp.initData })
   })
     .then(res => res.json())
     .then(data => {
       console.log("data : ", data)
-      document.querySelector("#app").innerText += "\n\n\n" + JSON.stringify(data)
+      document.querySelector("#success").innerText += "You logged in , result : " + JSON.stringify(data)
     })
     .catch(err => console.error('خطا:', err));
 })
