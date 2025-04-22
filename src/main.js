@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
   document.querySelector("#app").innerText = "initData : " + JSON.stringify(window.Telegram.WebApp.initData)
   console.log('hello2', JSON.stringify({ initDataUnsafe: Telegram.WebApp.initDataUnsafe }));
-  await fetch('http://localhost:4000/api/v1/auth/auth-user', {
+  await fetch('https://tma-airdrop.onrender.com/api/v1/auth/auth-user', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     .then(res => res.json())
     .then(data => {
       console.log("data : ", data)
-      document.querySelector("#success").innerText += "You logged in , result : " + JSON.stringify(data)
+      document.querySelector("#success").innerText = "You logged in , result : " + JSON.stringify(data)
     })
     .catch(err => {
       console.error('خطا:', err)
-      document.querySelector("#success").innerText += "failed , result : " + JSON.stringify(data)
+      document.querySelector("#success").innerText = "failed , result : " + JSON.stringify(data)
 
     });
 })
