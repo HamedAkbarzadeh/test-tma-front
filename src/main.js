@@ -13,7 +13,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       console.log("data : ", data)
       document.querySelector("#success").innerText += "You logged in , result : " + JSON.stringify(data)
     })
-    .catch(err => console.error('خطا:', err));
+    .catch(err => {
+      console.error('خطا:', err)
+      document.querySelector("#success").innerText += "failed , result : " + JSON.stringify(data)
+
+    });
 })
 //ios     : 9a3feb465d19d5855b043c59cb7527657dd23481a0d848c64a668e3740a2e276
 //android : 9a3feb465d19d5855b043c59cb7527657dd23481a0d848c64a668e3740a2e276
